@@ -1,0 +1,87 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Categories Table</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                      <a href="{{path('admin_category_add')}}" class="btn btn-primary pull-left" onclick="category_edit(this)">Add new category</a>
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Title
+                        </th>
+                        <th>
+                          Descreption
+                        </th>
+                        <th>
+                          Parent Category
+                        </th>
+                        <th>
+                          Keywords
+                        </th>
+                        <th>
+                          Status
+                        </th>
+                         <th>
+                          Action
+                        </th>
+                      </thead>
+                      <tbody>
+                      {%for category in categories %}
+                        <tr>
+                          <td>
+                            {{category.id}}
+                          </td>
+                          <td>
+                            {{category.title}}
+                          </td>
+                          <td>
+                           {{category.description}}
+                          </td>
+                          <td>
+                            {{category.cat_title}}
+                          </td>
+                          <td>
+                            {{category.keywords}}
+                          </td>
+                           <td>
+                            {{category.status}}
+                          </td>
+                          <td>
+                             <a  href="/admin/category/edit/{{category.id}}"><button type="button" rel="tooltip" class="btn btn-white btn-link btn-sm" data-original-title="Edit Category" >
+                                <i class="material-icons">edit</i>
+                            </button>
+                            </a>
+                             <a  href="/admin/category/delete/{{category.id}}" onclick="confirm('are you sure?')">
+                              <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Remove">
+                                <i class="material-icons">close</i>
+                              </button>
+                              </a>
+                          </td>
+                          
+                        </tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="Categories";
+    document.getElementById("sidebar_category").setAttribute("class","nav-item active");
+})();
+</script>
+{% endblock %}

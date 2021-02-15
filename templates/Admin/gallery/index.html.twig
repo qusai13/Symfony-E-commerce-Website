@@ -1,0 +1,23 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <form method="post" enctype="multipart/form-data" action="/admin/gallery/add/{{productid}}">
+        <input type="file" name="image" >
+        <button type="submit" class="btn btn-primary pull">Submit</button>
+        </form>
+        {% for img in imgs %}
+            <image src="/uploads/gallery/{{img.path}} " style="height:250px;width:250px; border-radius: 10%; margin-top: 10px;"/>
+            <a href="/admin/gallery/delete/{{img.id}}/{{productid}} " onclick="return confirm ('are you sure?!')">
+                <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Remove">
+                    <i style="margin-left: -5px" class="material-icons">close</i>
+                </button>
+            </a>
+        {% endfor %}
+    </div>
+    <script>
+        (function () {
+            document.getElementById("navbar_title").innerText = "Gallery";
+            document.getElementById("sidebar_products").setAttribute("class", "nav-item active");
+        })();
+    </script>
+{% endblock %}

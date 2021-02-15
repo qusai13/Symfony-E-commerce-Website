@@ -1,0 +1,36 @@
+<div style="float:left;width:25%;">
+ {{ render(controller('App\\Controller\\MainController::get_menu_cat')) }}
+</div>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="float:left;width:75%">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    {% set active="active" %}
+    {% set counter=0 %}
+    {% for slider in sliders %}
+        <li data-target="#myCarousel" data-slide-to="{{counter}}" class="{{active}}"></li>
+        {% set active="" %}
+        {% set counter=counter+1 %}
+    {% endfor %}
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" >
+  {% set active="active" %}
+  {% for slider in sliders %}
+    <div class="item {{active}}">
+      <a href="{{slider.url}}">
+        <img src="/uploads/slider_imgs/{{slider.image}}" alt="Los Angeles" style="height:300px;margin:auto;">
+      </a>
+    </div>
+    {% set active="" %}
+  {% endfor %}
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev" >
+    <a  class="left button"></a>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next" id="goleft">
+    <a class="right button"></a>
+  </a>
+</div>

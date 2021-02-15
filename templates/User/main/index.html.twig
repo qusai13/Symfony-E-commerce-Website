@@ -1,0 +1,19 @@
+{% extends "User/base.html.twig" %}
+{% block title %}{{setting.title}}{% endblock %}
+{% block description %}{{setting.description}}{% endblock %}
+{% block keywords %}{{setting.keywords}}{% endblock %}
+{% block body %}
+	{{ render(controller('App\\Controller\\MainController::get_slider')) }}	
+	<section class="main-content">
+		<div class="row">
+			<div class="span12">
+			
+				{{ render(controller('App\\Controller\\MainController::get_featured_products')) }}			
+				<br/>
+				{{ render(controller('App\\Controller\\MainController::get_latest_products')) }}
+				{{include ('User/parts/feature_box.html.twig')}}	
+			</div>				
+		</div>
+	</section>
+	{{include ('User/parts/manufactures.html.twig')}}
+{% endblock %}

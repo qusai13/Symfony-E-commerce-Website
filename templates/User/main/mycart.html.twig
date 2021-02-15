@@ -1,0 +1,80 @@
+{% extends "User/base.html.twig" %}
+{% block title %}My cart{% endblock %}
+{% set amount=0 %}
+{% block body %}
+    <section class="header_text sub">
+        <img class="pageBanner" src="/uploads/gallery/movies-tiles.jpg" alt="New products">
+        <h4>
+            <span>Shopping Cart</span></h4>
+    </section>
+    <section class="main-content">
+        <div class="row">
+            <div class="span12">
+            <div style="width:25%;float:left;">
+            <ul >
+                    <li >
+                        <a href="/myaccount">My profile</a>
+                    </li>
+                    <li>
+                        <a href="/comments">My Comments</a>
+                    </li>
+                    <li>
+                        <a  href="/mycarts">My Orders</a>
+                    </li>
+                    <li>
+                        <a href="/cart">My Cart</a>
+                    </li>
+                    
+                </ul>
+            </div>
+                <div style="width:75%;float:left;">
+              <h4 class="title">
+                    <span class="text">
+                        <strong>Your</strong>
+                        Cart</span></h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Total price</th>
+                            <th>shopping date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{order.id}}</td>
+                                <td>${{order.total}}</td>
+                                <td>{{order.createat}}</td>
+                                <td>{{order.status}}</td>
+								<td> 
+								<a  href="/cartdetails/{{order.id}}">
+                              <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Detail">
+                                <i class="material-icons">Details</i>
+                              </button>
+                              </a>
+								</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

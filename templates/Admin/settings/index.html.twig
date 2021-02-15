@@ -1,0 +1,132 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <form method="post" action="/admin/settings/update">
+                    <div class="card card-nav-tabs card-plain">
+                        <div class="card-header card-header-primary">
+                            <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper">
+                                    <ul class="nav nav-tabs" data-tabs="tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#website_information" data-toggle="tab">website information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#company_information" data-toggle="tab">company information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#smtp_information" data-toggle="tab">smtp information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#contact" data-toggle="tab">contact information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#referans" data-toggle="tab">referans information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#about_us" data-toggle="tab">About us</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body ">
+                            <div class="tab-content text-center">
+                                <div class="tab-pane active" id="website_information">
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Title</label>
+                                        <input type="text" name="title" class="form-control" value="{{setting.title}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Description</label>
+                                        <input type="text" name="description" class="form-control" value="{{setting.description}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Keywords</label>
+                                        <input type="text" name="keywords" class="form-control" value="{{setting.keywords}}">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="company_information">
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Company name</label>
+                                        <input type="text" name="company" class="form-control" value="{{setting.company}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Address</label>
+                                        <input type="text" name="address" class="form-control" value="{{setting.address}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Fax</label>
+                                        <input type="text" name="fax" class="form-control" value="{{setting.fax}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Telephone</label>
+                                        <input type="text" name="tel" class="form-control" value="{{setting.tel}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Email</label>
+                                        <input type="text" name="email" class="form-control" value="{{setting.email}}">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="smtp_information">
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Smtp server</label>
+                                        <input type="text" name="smtpserver" class="form-control" value="{{setting.smtpserver}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Smtp mail</label>
+                                        <input type="text" name="smtpmail" class="form-control" value="{{setting.smtpmail}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Smtpp Password</label>
+                                        <input type="text" name="smtppasw" class="form-control" value="{{setting.smtppasw}}">
+                                    </div>
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating">Smtp Port</label>
+                                        <input type="text" name="smtpport" class="form-control" value="{{setting.smtpport}}">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="contact">
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating"></label>
+                                        <textarea name="contact" id="contact_inner" style="display:none">{{setting.contact}}</textarea>
+                                        <textarea id="contact_edit">{{setting.contact}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="referans">
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating"></label>
+                                        <textarea name="referans" id="referans_inner" style="display:none">{{setting.referans}}</textarea>
+                                        <textarea id="referans_edit">{{setting.referans}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="about_us">
+                                    <div class="form-group col-md-8" style="margin:auto;margin-top:20px;">
+                                        <label class="bmd-label-floating"></label>
+                                        <textarea name="aboutus" id="about_us_inner" style="display:none">{{setting.aboutus}}</textarea>
+                                        <textarea id="about_us_edit">{{setting.aboutus}}</textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull" style="width:100px">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+                            <div class="tab-pane" id="social">
+                                Social
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            document.getElementById("navbar_title").innerText = "Settings";
+            document.getElementById("sidebar_settings").setAttribute("class", "nav-item active");
+        })();
+    </script>
+{% endblock %}

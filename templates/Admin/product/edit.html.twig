@@ -1,0 +1,130 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8" style="margin:auto">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+
+                            <p class="card-category">Add Product</p>
+                        </div>
+                        <div class="card-body">
+                            <form method='post' enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Title</label>
+                                            <input type="text" value="{{product.title}}" name="title" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Type</label>
+                                            <input type="text" value="{{product.type}}" name="type" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Sell price</label>
+                                            <input type="text" name="sprice"value="{{product.sprice}}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Description</label>
+                                            <input type="text" value="{{product.description}}" name="description" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Keywords</label>
+                                            <input type="text" name="keywords" value="{{product.keywords}}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Publisher id</label>
+                                            <input type="text" name="publisherid" value="{{product.publisherid}}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Amount</label>
+                                            <input type="text" name="amount" value="{{product.amount}}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Buy price</label>
+                                            <input type="text" name="pprice" value="{{product.pprice}}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Image</label>
+                                            <input type="file" name="image" style="opacity:1;position:relative;width:auto;z-index:1;display:block">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Detail</label>
+                                            <textarea  name="detail" id="detail_inner" style="display:none">{{product.detail|raw}}</textarea>
+                                            <textarea   id="detail">{{product.detail|raw}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">User ID</label>
+                                            <input type="text" name="userid" value="{{product.userid}}"class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Category</label>
+                                            <select name="categoryid" class="form-control"  style="background:#202940">
+                                                {% for cat in cats %}
+                                                    <option value="{{cat.id}}" {% if cat.id == product.categoryid %} selected {% endif %}>{{cat.title}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputState">Status</label>
+                                        <select id="inputState" name="status" class="form-control"  style="background:#202940">
+                                            <option {% if product.status=="True"%}selected {% endif %} >True</option>
+                                            <option {% if product.status=="False"%}selected {% endif %}>False</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {%block subscript%}
+        <script>
+            const x = new Date().getFullYear();
+            let date = document.getElementById('date');
+            date.innerHTML = '&copy; ' + x + date.innerHTML;
+        </script>
+        {%endblock%}

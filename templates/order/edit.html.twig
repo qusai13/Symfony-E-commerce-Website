@@ -1,0 +1,124 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+        <form method='post' enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Ship Company</label>
+                                        <input type="text" name="shipcompany" value ="{{order.shipcompany}}" class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Ship information</label>
+                                        <input type="text" name="shipinf" value ="{{order.shipinf}}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Note</label>
+                                        <input type="text" name="note" value ="{{order.note}}" class="form-control">
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputState">Status</label>
+                                        <select id="inputState" name="status" class="form-control" style="background:#1a2035">
+                                            <option >{{order.status}}</option>
+                                            <option >New</option>
+                                            <option >Accepted</option>
+                                            <option >Shipped</option>
+                                            <option >Finished</option>
+                                            <option >Canceled</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-left">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">
+                                Orders Table</h4>
+                        </div>
+                        
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                Image
+                                            </th>
+                                            <th>
+                                                Product Description
+                                            </th>
+                                            <th>
+                                                Quantity
+                                            </th>
+                                            <th>
+                                                Price
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            {%for order_detail in order_details %}
+                                                <tr>
+                                                    <td>
+                                                   
+                                                            <image src="/uploads/product_imgs/{{order_detail.img}}" style="height:100px;width:100px;border-radius: 20%;"/>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        {{order_detail.descrip}}
+                                                    </td>
+                                                    <td>
+                                                        {{order_detail.quantity}}
+                                                    </td>
+                                                    <td>
+                                                        ${{order_detail.price}}
+                                                    </td>
+                                                    <td>
+                                                        ${{order_detail.amount}}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <p class="navbar-brand">Total price : {{order.total}}.</p>
+                                    <p class="navbar-brand">Payment type : {{order.paymenttype}}.</p>
+                                    </br>
+                                    <p class="navbar-brand" >Ship name : {{order.shipname}}.</p>
+                                    <p class="navbar-brand" >Ship address : {{order.shipaddress}}.</p>
+                                    </br>
+                                    <p class="navbar-brand" >Ship phone : {{order.shiptel}}.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="{{type}} orders";
+    document.getElementById("sidebar_orders_{{type}}").setAttribute("class","nav-item active");
+    
+})();
+</script>
+            
+        {% endblock %}

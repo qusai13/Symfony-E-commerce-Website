@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="keywrods" content="{% block keywords %}{% endblock %}">
+        <title>{% block title %}{% endblock %}</title>
+		{{ include ('User/parts/head.html.twig') }}
+</head>
+    <body>		
+		<div id="wrapper" class="container">
+			{{include ('User/parts/nav_bar.html.twig')}}
+			{% block body %}{% endblock %}
+			{{include ('User/parts/footer.html.twig')}}
+		</div>
+			{{include ('User/parts/scripts.html.twig')}}
+    </body>
+</html>

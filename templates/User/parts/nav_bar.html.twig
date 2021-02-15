@@ -1,0 +1,40 @@
+<section class="navbar main-menu">
+    <div class="navbar-inner main-menu">
+        <a href="/" class="logo pull-left" style="font-size:35px;margin-top:8px;">Movie-Shop</a>
+        <nav class="pull-left">
+        
+        </nav>
+        <nav id="menu" class="pull-right">
+            <ul>
+                <li>
+                    <a href="/contact">Contact Us</a>
+                </li>
+                <li><a href="register">Sign up</a></li>
+                <li>
+                    <a href="/aboutus">About Us</a>
+                </li>
+                <li>
+                    <a href="/cart">My Cart</a>
+                </li>
+               
+                {% if app.user %}
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                {% endif %}
+                <li>
+                {% if app.user %}
+        <a href="/myaccount">{{app.user.name}}</a>
+        {% else %}
+      <a href="/myaccount">My Account</a>
+        {% endif %}
+                    
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>

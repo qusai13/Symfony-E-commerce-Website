@@ -1,0 +1,70 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Slider Table</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                      <a href="{{path('admin_slider_add')}}" class="btn btn-primary pull-left" onclick="slider_edit(this)">Add new slider</a>
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Image
+                        </th>
+                        <th>
+                          URL
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </thead>
+                      <tbody>
+                      {%for slider in slider %}
+                        <tr>
+                          <td>
+                            {{slider.id}}
+                          </td>
+                          <td>
+                           <image src="/uploads/slider_imgs/{{slider.image}}" style="height:100px;width:100px;border-radius: 20%;"/>
+                          </td>
+                          <td>
+                            {{slider.url}}
+                          </td>
+                          <td>
+                            <a  href="/admin/slider/edit/{{slider.id}}">
+                            <button type="button" rel="tooltip" class="btn btn-white btn-link btn-sm" data-original-title="Edit Product">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            </a>
+                            <a href="/admin/slider/delete/{{slider.id}}" onclick="return confirm('are you sure?')">
+                                <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Remove">
+                                <i class="material-icons">close</i>
+                              </button>
+                            </a> 
+                        </tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="Slider";
+    document.getElementById("sidebar_slider").setAttribute("class","nav-item active");
+    
+})();
+</script>
+{% endblock %}
+

@@ -1,0 +1,148 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+            <a href="/admin/users/add"><button type="button" class="btn btn-primary">Add User</button></a>
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Users Table</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                        <th>
+                          Type
+                        </th>
+                        <th>
+                          Status
+                        </th>
+                        <th style="display:none">
+                            
+                          </th>
+                        <th>
+                          Action
+                        </th>
+                      </thead>
+                      <tbody>
+                      {%for user in users %}
+                        <tr>
+                          <td>
+                            {{user.id}}
+                          </td>
+                          <td>
+                            {{user.name}}
+                          </td>
+                          <td>
+                           {{user.email}}
+                          </td>
+                          <td>
+                            {{user.roles[0]}}
+                          </td>
+                          <td>
+                            {{user.status}}
+                          </td>
+                           <td style="display:none">
+                            {{user.password}}
+                          </td>
+                          <td>
+                            <button type="button" rel="tooltip" class="btn btn-white btn-link btn-sm" data-original-title="Edit User" onclick="user_edit(this)" data-toggle="modal" data-target="#edit_user_modal">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <a href="/admin/users/delete/{{user.id}}" onclick="confirm('are you sure?')">
+                                <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Remove">
+                                <i class="material-icons">close</i>
+                              </button>
+                            </a>
+                          </td>
+                          
+                        </tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<div class="modal fade" id="edit_user_modal" tabindex="-1" role="dialog" aria-labelledby="edit_user_modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content" style="background:#202940">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit_user_modalLabel" style="color:white">Edit User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body" >
+            <form name='users' method='post' action="/admin/users/edit/" id="user_edit_form">
+                <input type="hidden" name="users[id]" id="user_id"/>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group is-filled">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text"  name="users[name]" class="form-control" id="user_name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Email address</label>
+                          <input type="text" name="users[email]" class="form-control" id="user_email">
+                        </div>
+                      </div>
+                    </div>
+                     <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Password</label>
+                          <input type="password" name="password" class="form-control" id="user_email">
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                    <div class="form-group col-md-12">
+                     <label style="margin-left:10px;">Type</label>
+                       <select  name="users[roles]" class="form-control" id="user_type" style="background:#202940">
+                         <option value ="ROLE_ADMIN">ROLE_ADMIN</option>
+                         <option value="ROLE_USER">ROLE_USER</option>
+                       </select>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-12">
+                     <label style="margin-left:10px;">Status</label>
+                       <select  name="users[status]" class="form-control" id="user_status" style="background:#202940">
+                         <option value="True" >True</option>
+                         <option value="False">False</option>
+                       </select>
+                    </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </form>
+                </div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="Users";
+    document.getElementById("sidebar_users").setAttribute("class","nav-item active");
+    
+})();
+</script>
+{% endblock %}

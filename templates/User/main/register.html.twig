@@ -1,0 +1,78 @@
+{% extends "User/base.html.twig" %}
+{% block title %}Register{% endblock %}
+{% block body %}
+    {{msg}}
+    <section class="header_text sub">
+        <img class="pageBanner" src="/uploads/gallery/movies-tiles.jpg" alt="New products">
+        <h4>
+            <span>
+                Register
+            </span>
+        </h4>
+    </section>
+    <section class="main-content">
+        <div class="row">
+
+            <div class="span7">
+                <h4 class="title">
+                    <span class="text">
+                        <strong>Register</strong>
+                        Form</span></h4>
+                <form action="/register" method="post" class="form-stacked">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label">Username</label>
+                            <div class="controls">
+                                <input type="text" id="username" name="name" placeholder="Enter your username" class="input-xlarge" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Address</label>
+                            <div class="controls">
+                                <input type="text" id="username" name="address" placeholder="Enter your address" class="input-xlarge">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Email address:</label>
+                            <div class="controls">
+                                <input type="text" id="email" name="email" placeholder="Enter your email" class="input-xlarge" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Password:</label>
+                            <div class="controls">
+                                <input type="password" id="password" name="password" placeholder="Enter your password" class="input-xlarge" required="required">
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Telephone</label>
+                                <div class="controls">
+                                    <input type="text" id="username" name="tel" placeholder="Enter your telephone" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="controls">
+                                <input type="hidden" name="token" value="{{csrf_token('register')}}" class="input-xlarge">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <p>
+                                {% if msg is defined and msg != "" %}
+                                    <div class="alert alert-success" role="alert">
+                                        {{msg}}
+                                    </div>
+                                {% endif %}
+                                {% if error is defined and error != "" %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                    </div>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <hr>
+
+                        <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" name="submit" value="Create your account"></div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

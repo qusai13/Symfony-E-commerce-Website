@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+{{include ('Admin/parts/header.html.twig')}}
+<body class="dark-edition">
+  <div class="wrapper ">
+    {{include ('Admin/parts/sidebar.html.twig')}}
+    <div class="main-panel">
+      {{include ('Admin/parts/navbar.html.twig')}}
+      {% block body %}{% endblock %}
+    </div>
+  </div>
+  {{include ('Admin/parts/fixed-plugin.html.twig')}}
+  {{include ('Admin/parts/Scripts.html.twig')}}
+ </body>
+
+</html>

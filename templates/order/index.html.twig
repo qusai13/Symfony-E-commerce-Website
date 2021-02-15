@@ -1,0 +1,74 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">{{ type }} Orders Table</h4>
+                </div>
+                
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Ship name
+                        </th>
+                        <th>
+                          Ship Address
+                        </th>
+                        <th>
+                          total price
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </thead>
+                      <tbody>
+                      {%for order in orders %}
+                        <tr>
+                          <td>
+                            {{order.id}}
+                          </td>
+                          <td>
+                            {{order.shipname}}
+                          </td>
+                          <td>
+                          {{order.shipaddress}}
+                          </td>
+                          <td>
+                            ${{order.total}}
+                          </td>
+                          <td>
+                            <a  href="/admin/order/edit/{{order.id}}/{{type}}">
+                            <button type="button" rel="tooltip" class="btn btn-white btn-link btn-sm" data-original-title="Edit Order">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            </a>
+                           
+                          </td>
+                          
+                        </tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="{{type}} orders";
+    document.getElementById("sidebar_orders_{{type}}").setAttribute("class","nav-item active");
+    
+})();
+</script>
+{% endblock %}
+

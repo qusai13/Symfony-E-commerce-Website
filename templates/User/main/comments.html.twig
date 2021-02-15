@@ -1,0 +1,74 @@
+{% extends 'User/base.html.twig' %}
+{% block title %}Comments{% endblock %}
+
+{% block body %}
+    <section class="header_text sub">
+        <img class="pageBanner" src="/uploads/gallery/movies-tiles.jpg" alt="New products">
+        <h4>
+            <span>
+                My Account
+            </span>
+        </h4>
+    </section <section class="main-content">
+    <div class="row" style="margin-left:10px">
+
+        <div class="container bootstrap snippet">
+
+            <div class="row"></div>
+            <!--/col-3-->
+            <div class="col-sm-12">
+                <div style="width:25%;float:left;">
+                <ul >
+                    <li >
+                        <a  href="/myaccount">My profile</a>
+                    </li>
+                    <li class="active">
+                        <a  href="/comments">My Comments</a>
+                    </li>
+                    <li>
+                        <a  href="/mycarts">My Orders</a>
+                    </li>
+                    <li>
+                        <a href="/cart">My Cart</a>
+                    </li>
+                </ul>
+                </div>
+                <div  style="width:75%;float:left;">
+                    <table class="table table-condensed">
+                        <thead>
+                          <tr class="cart_menu">
+                            <td>image</td>
+                            <td>Product</td>
+                            <td>Comment</td>
+                            <td>Comment Date</td>
+                            <td>Action</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for comment in comments %}
+                          <tr>
+                            <td><img src="/uploads/product_imgs/{{comment.p_img}}" style="height:50px"/></td>
+                            <td>{{comment.p_desc}}</td>
+                            <td>{{comment.msg}}</td>
+                            <td>{{comment.msgdate}}</td>
+                            <td><a href="/comment/delete/{{comment.id}}/mycomments">remove</a></td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                        
+
+                    </div>
+                    <!--/tab-pane-->
+
+                </div>
+                <!--/tab-content-->
+
+            </div>
+            <!--/col-9-->
+        </div>
+        <!--/row-->
+    </div>
+</section>
+
+{% endblock %}

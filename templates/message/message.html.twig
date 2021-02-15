@@ -1,0 +1,118 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Messages Table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            name
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Subject
+                                        </th>
+                                        <th>
+                                            Body
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        {%for message in messages %}
+                                            <tr>
+                                                <td>
+                                                    {{message.id}}
+                                                </td>
+                                                <td>
+                                                    {{message.name}}
+                                                </td>
+                                                <td>
+                                                    {{message.email}}
+                                                </td>
+                                                <td>
+                                                    {{message.subject}}
+                                                </td>
+                                                <td>
+                                                    {{message.message}}
+                                                </td>
+                                                <td>
+                                                    {{message.messagedate}}
+                                                </td>
+                                                <td>
+                                                    {% if type == "unread" %}
+
+                                                        <a href="/admin/messages_type/{{message.id}}/read">
+                                                            <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Mark As Read">
+                                                                <i class="material-icons">edit</i>
+                                                            </button>
+                                                        </a>
+                                                    {% elseif type=="read" %}
+                                                        <a href="/admin/messages_type/{{message.id}}/unread">
+                                                            <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Mark As Unread">
+                                                                <i class="material-icons">edit</i>
+                                                            </button>
+                                                        </a>
+                                                    {% endif %}
+                                                    <a href="/admin/messages/delete/{{message.id}}" onclick="return confirm('are you sure?')">
+                                                        <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Remove">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </a>
+                                                    <a >
+                                                    <button type="button" class="btn btn-white btn-link btn-sm" rel="tooltip"  data-original-title="Show message">
+                                                        <i  class="material-icons" data-toggle="modal" data-target="#messagemodal" onclick="$('#message_body').html('{{message.message}}')">visibility</i>
+                                                    </button>
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="messagemodal" tabindex="-1" role="dialog" aria-labelledby="messagemodalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="messagemodalLabel">Read Message</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="message_body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function () {
+                document.getElementById("navbar_title").innerText = "{{type}} messages";
+                document.getElementById("sidebar_messages_{{type}}").setAttribute("class", "active");
+
+            })();
+        </script>
+    {% endblock %}

@@ -1,0 +1,198 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                  </div>
+                  <p class="card-category">Used Space</p>
+                  <h3 class="card-title">49/50
+                    <small>GB</small>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-warning">warning</i>
+                    <a href="#pablo" class="warning-link">Get More Space...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category">Revenue</p>
+                  <h3 class="card-title">$34,245</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">date_range</i> Last 24 Hours
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">info_outline</i>
+                  </div>
+                  <p class="card-category">Fixed Issues</p>
+                  <h3 class="card-title">75</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">local_offer</i> Tracked from Github
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="fa fa-twitter"></i>
+                  </div>
+                  <p class="card-category">Followers</p>
+                  <h3 class="card-title">+245</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">update</i> Just Updated
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Simple Table</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                        <th>
+                          Type
+                        </th>
+                        <th>
+                          Status
+                        </th>
+                      </thead>
+                      <tbody>
+                      {%for user in users %}
+                        <tr>
+                          <td>
+                            {{user.id}}
+                          </td>
+                          <td>
+                            {{user.name}}
+                          </td>
+                          <td>
+                           {{user.email}}
+                          </td>
+                          <td>
+                            {{user.type}}
+                          </td>
+                          <td>
+                            {{user.status}}
+                          </td>
+                          <td>
+                             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick="user_edit(this)">Edit</button>
+                             <a  class="btn btn-primary pull-right" href="/admin/users/delete/{{user.id}}" onclick="confirm('are you sure?')">Delete</a>
+                          </td>
+                          
+                        </tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content" style="background:#202943">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body" >
+                  <form name='users' method='post' action="/admin/users/edit" id="user_edit_form">
+                    <input type="hidden" name="users[id]" id="user_id"/>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group is-filled">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text"  name="users[name]" class="form-control" id="user_name">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Email address</label>
+                          <input type="text" name="users[email]" class="form-control" id="user_email">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Password</label>
+                          <input type="password"  name="users[password]" class="form-control" id="user_password">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-4">
+                     <label for="inputState">Type</label>
+                       <select id="inputState"  name="users[type]" class="form-control" id="user_type">
+                         <option value ="Admin">Admin</option>
+                         <option value="user">User</option>
+                         <option value="accountant">accountant</option>
+                       </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                     <label for="inputState">Status</label>
+                       <select id="inputState"  name="users[status]" class="form-control">
+                         <option value="True" >True</option>
+                         <option value="False">False</option>
+                         
+                       </select>
+                    </div>
+                    </div>
+                  </form>
+                </div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="Home";
+    document.getElementById("sidebar_home").setAttribute("class","nav-item active");
+    
+})();
+</script>
+{% endblock %}

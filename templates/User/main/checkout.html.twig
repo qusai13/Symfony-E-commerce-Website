@@ -1,0 +1,42 @@
+{% extends "User/base.html.twig" %}
+{% block title %}Check out{% endblock %}
+{% block body %}
+        <div>
+            <div class="accordion-inner">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <h4>Your Personal Details</h4>
+                     <div class="control-group">
+                        <form method="post">
+                            <label class="control-label">
+                               
+                           <form action="post">
+						      <div class="control-group">
+                            <label class="control-label">Total Price:</label>
+                            <div class="controls">
+                                <input type="text" placeholder="" class="input-xlarge" value="{{order.total}}" disabled>
+                            </div>
+                        </div>
+                         <div class="control-group">
+                            <label class="control-label">Cart Number:</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Cart Number" class="input-xlarge"  >
+                            </div>
+                        </div>
+						<input type="hidden" name="token" value="{{ csrf_token('check') }}"/>
+                        <div class="row-fluid">
+                            <div class="control-group">
+                                <button class="btn btn-inverse pull-right" type="submit" >Submit Order</button>
+
+                            </div>
+
+                        </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "Admin/Base.html.twig" %}
+{%block sidebar%}
+<div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+          Creative Tim
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="./">
+              <i class="material-icons">Home</i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item  ">
+            <a class="nav-link" href="./users">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./tables">
+              <i class="material-icons">content_paste</i>
+              <p>Table List</p>
+            </a>
+          </li>
+          
+          
+          <li class="nav-item ">
+            <a class="nav-link" href="./notifications">
+              <i class="material-icons">notifications</i>
+              <p>Notifications</p>
+            </a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+{%endblock%}
+{%block main%}
+<div id="map"></div>
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+{%endblock%}

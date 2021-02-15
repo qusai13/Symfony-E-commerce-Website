@@ -1,0 +1,59 @@
+{% extends "User/base.html.twig" %}
+{% block title %}Cart Address{% endblock %}
+{% block body %}
+        <div >
+            <div class="accordion-inner">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <h4>Your Personal Details</h4>
+                     <div class="control-group">
+                        <form method="post">
+                            <label class="control-label">
+                                <span class="required">*</span>
+                               <label> Payment Type:</label>
+                            <div class="controls">
+                                <select name="paymenttype" class="input-xlarge">
+                                    <option  selected>{{order.paymenttype}}</option>
+                                    <option value="Cart">Cart</option>
+                                    <option value="Online">Online</option>
+                                    <option value="Cash">Cash</option>
+                                </select>
+                            </div>
+                        </div>
+                         <div class="control-group">
+                            <label class="control-label">Total Price:</label>
+                            <div class="controls">
+                                <input type="text" placeholder="" class="input-xlarge" value="{{order.total}}" disabled>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Ship Name:</label>
+                            <div class="controls">
+                                <input type="text" placeholder="" class="input-xlarge" name="shipname" value="{{order.shipname}}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Ship Address:</label>
+                            <div class="controls">
+                                <input type="text" placeholder="" class="input-xlarge"  name="shipaddress" value="{{order.shipaddress}}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Ship Tel:</label>
+                            <div class="controls">
+                                <input type="text" placeholder="" class="input-xlarge" name="shiptel" value="{{order.shiptel}}">
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="control-group">
+                                <a  href="/cart/checkout" onclick="return confirm('are you sure')" class="btn btn-inverse pull-right">Check Out</a>
+                                <button class="btn btn-inverse pull-right" type="submit" >Update</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

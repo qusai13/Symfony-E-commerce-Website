@@ -1,0 +1,94 @@
+<div class="sidebar" data-color="purple" data-background-color="black" data-image="/assets/img/sidebar-2.jpg">
+    <!-- Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger" Tip 2: you can also add an image using data-image tag -->
+    <div class="logo">
+        <a href="/admin" class="simple-text logo-normal">
+           {% if app.user %}
+        {{app.user.name}}
+        {% else %}
+       Not registered yet
+        {% endif %}
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item" id="sidebar_users">
+                <a class="nav-link" href="/admin">
+                    <i class="material-icons">people</i>
+                    <p>Users</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_category">
+                <a class="nav-link" href="/admin/category">
+                    <i class="material-icons">list</i>
+                    <p>Category</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_products">
+                <a class="nav-link" href="/admin/product">
+                    <i class="material-icons">assignment</i>
+                    <p>Products</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_settings">
+                <a class="nav-link" href="/admin/settings">
+                    <i class="material-icons">settings</i>
+                    <p>Settings</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_slider">
+                <a class="nav-link" href="/admin/slider">
+                    <i class="material-icons">view_carousel</i>
+                    <p>Slider</p>
+                </a>
+            </li>
+              <li class="nav-item " id="sidebar_messages_unread">
+                <a class="nav-link" href="/admin/messages/unread">
+                    <i class="material-icons">email</i>
+                    <p>Unread Messages</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_messages_read">
+                <a class="nav-link" href="/admin/messages/read">
+                    <i class="material-icons">email</i>
+                    <p>Read Messages</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_orders_new">
+                <a class="nav-link" href="/admin/order/new">
+                    <i class="material-icons">notifications</i>
+                    <p>New Orders</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_orders_accepted">
+                <a class="nav-link" href="/admin/order/accepted">
+                    <i class="material-icons">assignment_turned_in
+                    </i>
+                    <p>
+                        Accepted Orders</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_orders_shipped">
+                <a class="nav-link" href="/admin/order/shipped">
+                    <i class="material-icons">flight_takeoff</i>
+                    <p>Shipped Orders</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_orders_finished">
+                <a class="nav-link" href="/admin/order/finished">
+                    <i class="material-icons">thumb_up
+                    </i>
+                    <p>
+                        Finished Orders</p>
+                </a>
+            </li>
+            <li class="nav-item " id="sidebar_orders_canceled">
+                <a class="nav-link" href="/admin/order/canceled">
+                    <i class="material-icons">cancel</i>
+                    <p>
+                        Canceled Orders</p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

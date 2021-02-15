@@ -1,0 +1,42 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8" style="margin:auto">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+
+                            <p class="card-category">Add Slider</p>
+                        </div>
+                        <div class="card-body">
+                            <form method='post' enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">URL</label>
+                                            <input type="text" name="url" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Image</label>
+                                            <input type="file" name="image" style="opacity:1;position:relative;width:auto;z-index:1;display:block">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function () {
+                document.getElementById("navbar_title").innerText = "Add Slider";
+                document.getElementById("sidebar_slider").setAttribute("class", "nav-item active");
+            })();
+        </script>
+    {% endblock %}

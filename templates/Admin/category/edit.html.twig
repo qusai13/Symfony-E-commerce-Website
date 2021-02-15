@@ -1,0 +1,69 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8" style="margin:auto">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <p class="card-category">Edit Category</p>
+                        </div>
+                        <div class="card-body">
+                            <form  method='post'>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Title</label>
+                                            <input type="text" value="{{category.title}}" name="title" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Description</label>
+                                            <input type="text"  value="{{category.description}}" name="description" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Parent</label>
+                                            <select name="parentid" class="form-control"  style="background:#202940">
+                                                {% for cat in cats %}
+                                                    <option value="{{cat.id}}" {% if cat.id == category.parentid %} selected {% endif %}>{{cat.title}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Keywords</label>
+                                            <input type="text"  value="{{category.keywords}}" name="keywords" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label style="margin-left:15px;margin-top:5px" >Status</label>
+                                        <select value="{{category.status}}" name="statu" class="form-control" style="background:#202940">
+                                            <option {% if category.status=="True"%}selected {% endif %} >True</option>
+                                            <option {% if category.status=="False"%}selected {% endif %}>False</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function () {
+                document.getElementById("navbar_title").innerText = "Edit Category";
+                document.getElementById("sidebar_category").setAttribute("class", "nav-item active");
+            })();
+        </script>
+    {% endblock %}
+  

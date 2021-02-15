@@ -1,0 +1,66 @@
+{% extends "Admin/Base.html.twig" %}
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8" style="margin:auto">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <p class="card-category">Add user</p>
+                        </div>
+                        <div class="card-body">
+                            <form name='users' method='post' action="/admin/users/add">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Username</label>
+                                            <input type="text" name="users[name]" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Email address</label>
+                                            <input type="text" name="users[email]" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Password</label>
+                                            <input type="password" name="password" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"></div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label style="margin-left:10px">Type</label>
+                                        <select  name="users[roles]" class="form-control" style="background:#202940">
+                                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                                            <option value="ROLE_USER">ROLE_USER</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label style="margin-left:10px">Status</label>
+                                        <select  name="users[status]" class="form-control" style="background:#202940">
+                                            <option >True</option>
+                                            <option >False</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">Save</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+(function() {
+    document.getElementById("navbar_title").innerText="Add User";    
+})();
+</script>        
+    {% endblock %}
